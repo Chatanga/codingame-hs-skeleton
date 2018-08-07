@@ -57,14 +57,13 @@ output are always ignored in a replay and it’s only a mean to debug a past gam
 
 ```haskell
 λ> doReplay 123456789
-...
 ```
 
 (The Game ID will surely be different)
 
 Since the replay is local and use your bot as is, you can easily put breakpoint to understand
 its behavior, inspect any variable, produce meaningful
-(diagrams)[https://archives.haskell.org/projects.haskell.org/diagrams/] to clarify things up,
+[diagrams](https://archives.haskell.org/projects.haskell.org/diagrams/) to clarify things up,
 etc.
 
 Once your bot is ready to enter the Arena, you can submit it.
@@ -98,12 +97,12 @@ The "# convention"
 The skeleton use the Haskell bootstrap code provided by Codingame for the "Code of Kutulu" contest
 with some minor modification:
 
-    - The `BotRunner` module has been imported.
-    - The main has been changed into `runMain = runBot True bot`.
-    - The man function has been changed into `bot readLine writeLine`.
-    - The now unecessary `hSetBuffering stdout NoBuffering` has been removed.
-    - Every direct access to `stdin` has been modified to use the `readLine` function provided.
-    - Every direct access to `stdout` has been modified to use the `writeLine` function provided.
+- The `BotRunner` module has been imported.
+- The main has been changed into `runMain = runBot True bot`.
+- The man function has been changed into `bot readLine writeLine`.
+- The now unecessary `hSetBuffering stdout NoBuffering` has been removed.
+- Every direct access to `stdin` has been modified to use the `readLine` function provided.
+- Every direct access to `stdout` has been modified to use the `writeLine` function provided.
 
 With these changes, the bot will now automatically echo on `stderr` its input with a `#` prefix
 That’s all that matter here and it can obviously be done by other means.
