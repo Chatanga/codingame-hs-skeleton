@@ -53,7 +53,7 @@ with a JSON file in it. That’s a game result named by its Game ID. If you bot 
 "# convention" explaned below, you should be able to replay this game locally. Note that
 it is a replay, a post-mortem in other words. You can change the bot code along the way
 leading to potentially different output, but it won't change the replay itself. Your bot’s
-output are always ignored in a replay and it’s only a mean to debug a past game.
+output is always ignored in a replay and it’s only a mean to debug a past game.
 
 ```haskell
 λ> doReplay 123456789
@@ -61,7 +61,7 @@ output are always ignored in a replay and it’s only a mean to debug a past gam
 
 (The Game ID will surely be different)
 
-Since the replay is local and use your bot as is, you can easily put breakpoint to understand
+Since the replay is local and use your bot as is, you can easily put breakpoints to understand
 its behavior, inspect any variable, produce meaningful
 [diagrams](https://archives.haskell.org/projects.haskell.org/diagrams/) to clarify things up,
 etc.
@@ -79,7 +79,7 @@ before retrieving the list of your last completed battles.
 λ> doList
 ```
 
-You can download any game result you are interrested using its Game ID.
+You can download any game result you are interested in by using its Game ID.
 
 ```haskell
 λ> doRetrieve
