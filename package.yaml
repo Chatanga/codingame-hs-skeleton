@@ -1,0 +1,36 @@
+name:                codingame-hs-skeleton
+version:             1.0
+
+dependencies:
+- base
+- aeson
+- attoparsec
+- bytestring
+- codingame-hs
+- directory
+- filepath
+
+library:
+  source-dirs: src
+
+executables:
+  codingame-hs-skeleton-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - codingame-hs-skeleton
+
+tests:
+  codingame-hs-skeleton-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - codingame-hs-skeleton
