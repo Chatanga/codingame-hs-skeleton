@@ -94,20 +94,20 @@ The saved game result is now available for a local replay.
 The "# convention"
 ------------------
 
-The skeleton use the Haskell bootstrap code provided by Codingame for the "Code of Kutulu" contest
-with some minor modification:
+The skeleton uses the Haskell bootstrap code provided by Codingame for the "Code of Kutulu" contest
+with some minor modifications:
 
 - The `BotRunner` module has been imported.
 - The main has been changed into `runMain = runBot True bot`.
-- The man function has been changed into `bot readLine writeLine`.
+- The man function has been changed into `bot :: Bot`.
 - The now unecessary `hSetBuffering stdout NoBuffering` has been removed.
 - Every direct access to `stdin` has been modified to use the `readLine` function provided.
 - Every direct access to `stdout` has been modified to use the `writeLine` function provided.
 
 With these changes, the bot will now automatically echo on `stderr` its input with a `#` prefix
 That’s all that matter here and it can obviously be done by other means.
-The benefit of the changes listed above are that they allow you bot to be used without additional
-modification by our replay function.
+The benefit of the changes listed above are that they allow your bot to be used without additional
+modifications by the `replay` function in the `Codingame` module.
 
 The reason why we need to echo the input back into `stderr` is simply that the game result omit
 `stdin` (and only provided `stderr` for your agents).
