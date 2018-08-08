@@ -35,7 +35,7 @@ import Debug
 -- or some other means of authentication.
 credentialsFilePath = "credentials.json"
 
--- In case you don’t know it, a call to doPlay with print it.
+-- In case you don’t know it, a call to doSubmit with print it.
 userId = 123456
 
 -- If you don't know the exact challenge title, just enter some gibberish.
