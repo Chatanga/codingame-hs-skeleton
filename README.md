@@ -56,14 +56,15 @@ just enter it by visiting the Codingame site competition section.
 
 If all went well, you should have a `LastBattles` folder created in your working directory
 with a JSON file in it. That’s a game result named by its Game ID. If you bot follow the
-"# convention" explaned below, you should be able to replay this game locally. Note that
+"# convention" explained below, you should be able to replay this game locally. Note that
 it is a replay, a post-mortem in other words. You can change the bot code along the way
 leading to potentially different output, but it won't change the replay itself. Your bot’s
 output is always ignored in a replay and it’s only a mean to debug a past game.
 
 ```haskell
 λ> doReplay 329737891
-Two bots enter; one bot leaves!WAIT
+Two bots enter; one bot leaves!
+WAIT
 WAIT
 WAIT
 ...
