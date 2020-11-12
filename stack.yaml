@@ -1,5 +1,8 @@
-resolver: lts-11.19
+resolver: lts-16.21
 
 packages:
 - .
 - ../codingame-hs
+
+extra-deps:
+- hpp-0.6.3

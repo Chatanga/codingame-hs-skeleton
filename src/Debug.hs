@@ -5,7 +5,7 @@ module Debug
     ,_traceList
     ) where
 
-import Data.List
+import Data.List ( intercalate )
 import qualified Debug.Trace as Trace
 
 trace :: Show a => String -> a -> a

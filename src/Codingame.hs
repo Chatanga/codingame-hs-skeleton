@@ -8,26 +8,24 @@ module Codingame
     , doReplay
     ) where
 
-import Control.Monad
-import Data.Aeson
+import Control.Monad ( when )
+import Data.Aeson ( encode, json, fromJSON, Result(Success, Error), ToJSON(toJSON) )
 import Data.Attoparsec.ByteString (parseOnly)
 import qualified Data.ByteString.Lazy.Char8 as LBS
 import qualified Data.ByteString as BS
-import Data.Function ((&))
-import Data.IORef
-import Data.List
-import Data.Maybe
-import System.Directory
-import System.FilePath
-import System.IO
-import System.IO.Error
+import Data.Function ( (&) )
+import Data.IORef ( newIORef, readIORef, writeIORef )
+import Data.List ( findIndex, intercalate, isPrefixOf )
+import System.Directory ( createDirectoryIfMissing )
+import System.FilePath ( (</>) )
+import System.IO ( stderr, hPutStrLn )
+import System.IO.Error ( catchIOError, eofErrorType, isEOFError, mkIOError )
 
 import Codingame.WebServices
 import Codingame.SourcePackager
 
 import BotRunner
 import Player
-import Debug
 
 --------------------------------------------------------------------------------
 
@@ -76,7 +74,7 @@ doList = do
     getLastBattles credentials challengeTitle >>= \case
         Left e -> hPutStrLn stderr e
         Right battles -> do
-            let showBattle Battle{..} = show (battle_gameId) ++ " - " ++ intercalate ", " (map showPlayer (battle_players))
+            let showBattle Battle{..} = show battle_gameId ++ " - " ++ intercalate ", " (map showPlayer battle_players)
                 showPlayer Player{..} = show player_position ++ ": " ++ player_nickname ++ " (" ++ show player_playerAgentId ++ ")"
             putStrLn $ "Completed last battles:\n" ++ intercalate "\n" (battles & filter battle_done & map showBattle)
 

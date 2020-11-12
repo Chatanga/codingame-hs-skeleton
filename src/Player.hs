@@ -29,8 +29,8 @@ when packaging the source code with the SourcePackager module.
     let width = read input_line :: Int
     input_line <- readLine
     let height = read input_line :: Int
-    
-    replicateM height $ do
+
+    replicateM_ height $ do
         line <- readLine
         return ()
     input_line <- readLine
@@ -39,13 +39,13 @@ when packaging the source code with the SourcePackager module.
     let sanitylossgroup = read (input!!1) :: Int -- how much sanity you lose every turn when near another player, always 1 until wood 1
     let wandererspawntime = read (input!!2) :: Int -- how many turns the wanderer take to spawn, always 3 until wood 1
     let wandererlifetime = read (input!!3) :: Int -- how many turns the wanderer is on map after spawning, always 40 until wood 1
-    
+
     -- game loop
     forever $ do
         input_line <- readLine
         let entitycount = read input_line :: Int -- the first given entity corresponds to your explorer
-        
-        replicateM entitycount $ do
+
+        replicateM_ entitycount $ do
             input_line <- readLine
             let input = words input_line
             let entitytype = input!!0
@@ -56,8 +56,8 @@ when packaging the source code with the SourcePackager module.
             let param1 = read (input!!5) :: Int
             let param2 = read (input!!6) :: Int
             return ()
-        
+
         -- hPutStrLn stderr "Debug messages..."
-        
+
         -- MOVE <x> <y> | WAIT
         writeLine "WAIT"

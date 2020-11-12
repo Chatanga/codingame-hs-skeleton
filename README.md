@@ -128,7 +128,7 @@ with some minor modifications:
 - The `BotRunner` module has been imported.
 - A `runMain = runBot True bot` function (renamed as `main` by the packager) has been added.
 - The original `main` function has been changed into a `bot :: Bot` function.
-- The now unecessary `hSetBuffering stdout NoBuffering` has been removed.
+- The now unnecessary `hSetBuffering stdout NoBuffering` has been removed.
 - Every direct access to `stdin` has been modified to use the provided `readLine` function.
 - Every direct access to `stdout` has been modified to use the provided `writeLine` function.
 

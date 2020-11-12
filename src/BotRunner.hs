@@ -4,8 +4,13 @@ module BotRunner
     , runBot
     ) where
 
-import Control.Monad
+import Control.Monad ( when )
 import System.IO
+    ( hSetBuffering,
+      stderr,
+      stdout,
+      hPutStrLn,
+      BufferMode(NoBuffering) )
 
 -- A Codingame bot where input and output have been abstracted out.
 type Bot = IO String -> (String -> IO ()) -> IO ()
