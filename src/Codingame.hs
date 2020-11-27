@@ -48,7 +48,13 @@ sourcePath = "src/Player.hs"
 
 -- The agents used for a game play in the Codingame IDE. Always put your bot as
 -- the first agent (index 0) to make replay possible (see replay function below).
+-- Note that 'PlayerId userId' is your last submitted code in the arena whereas
+-- 'IdeCode' is simply the code you send to the IDE.
 agents = [IdeCode, DefaultAi, DefaultAi, DefaultAi]
+
+-- The options used for a game play in the Codingame IDE.
+-- Nothing: auto game / Just ... : manual game (eg. Just "seed=-1234").
+options = Nothing
 
 -- Probably the same as the one defined in "sourcePath".
 botForReplay = bot
@@ -95,7 +101,7 @@ doPlay :: IO ()
 doPlay = do
     source <- createMonolithicSource sourcePath
     credentials <- readCredentials credentialsFilePath
-    playInIDE credentials challengeTitle source agents Nothing >>= \case
+    playInIDE credentials challengeTitle source agents options >>= \case
         Left e -> hPutStrLn stderr e
         Right gameResult -> do
             save storePath gameResult
@@ -116,7 +122,7 @@ replay aBot gameResult = do
         -- this agent_index seems redundant with the actual index.
         myAgentId = case agentsFound of
             Nothing -> 0 -- No agents are provided for games played in the IDE.
-            Just agents -> case findIndex ((==) userId . codingamer_userId . agent_codingamer) agents of
+            Just agents -> case findIndex ((==) userId . maybe (-1) codingamer_userId . agent_codingamer) agents of
                 Nothing -> error $ "User ID not found among " ++ show (map agent_agentId agents)
                 Just index -> index
 
