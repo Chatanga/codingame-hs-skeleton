@@ -41,7 +41,7 @@ userId = 123456
 -- error giving to you the list of available challenges.
 -- Note that if you play the ongoing challenge, if any, you must use the
 -- OngoingChallenge data constructor and not provide any explicit title.
-challengeTitle = ChallengeTitle "Code of Kutulu"
+challengeSelector = PastChallengeTitle "Code of Kutulu"
 
 -- The root source file of your bot.
 sourcePath = "src/Player.hs"
@@ -69,7 +69,7 @@ doSubmit :: IO ()
 doSubmit = do
     source <- createMonolithicSource sourcePath
     credentials <- readCredentials credentialsFilePath
-    submitToArena credentials challengeTitle source >>= \case
+    submitToArena credentials challengeSelector source >>= \case
         Left e -> hPutStrLn stderr e
         Right agentId -> putStrLn $ "Agent ID: " ++ show agentId
 
@@ -77,7 +77,7 @@ doSubmit = do
 doList :: IO ()
 doList = do
     credentials <- readCredentials credentialsFilePath
-    getLastBattles credentials challengeTitle >>= \case
+    getLastBattles credentials challengeSelector >>= \case
         Left e -> hPutStrLn stderr e
         Right battles -> do
             let showBattle Battle{..} = show battle_gameId ++ " - " ++ intercalate ", " (map showPlayer battle_players)
@@ -88,7 +88,7 @@ doList = do
 doRetrieve :: Int -> IO ()
 doRetrieve gameId = do
     credentials <- readCredentials credentialsFilePath
-    getGameResult credentials challengeTitle gameId >>= \case
+    getGameResult credentials challengeSelector gameId >>= \case
         Left e -> hPutStrLn stderr e
         Right gameResult -> do
             save storePath gameResult
@@ -101,7 +101,7 @@ doPlay :: IO ()
 doPlay = do
     source <- createMonolithicSource sourcePath
     credentials <- readCredentials credentialsFilePath
-    playInIDE credentials challengeTitle source agents options >>= \case
+    playInIDE credentials challengeSelector source agents options >>= \case
         Left e -> hPutStrLn stderr e
         Right gameResult -> do
             save storePath gameResult
