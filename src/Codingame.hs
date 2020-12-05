@@ -41,7 +41,7 @@ userId = 123456
 -- error giving to you the list of available challenges.
 -- Note that if you play the ongoing challenge, if any, you must use the
 -- OngoingChallenge data constructor and not provide any explicit title.
-challengeSelector = PastChallengeTitle "Code of Kutulu"
+challengeSelector = PastChallengeTitle "code-of-kutulu"
 
 -- The root source file of your bot.
 sourcePath = "src/Player.hs"
